@@ -1,0 +1,178 @@
+ALGORITHM algo2
+VAR
+    set1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m];
+    i,j:INTEGER
+    sum:INTEGER
+
+BEGIN
+    sum=0
+    FOR i FROM 0 TO set1.length STEP 1  DO
+        Read(set1[i])
+    END_FOR
+    FOR j FROM 0 TO set2.length STEP 1  DO
+        Read(set2[j])
+    END_FOR
+    
+    FOR i FROM 0 TO set1.length STEP 1  DO
+        FOR j FROM 0 TO set2.length STEP 1  DO
+        
+            IF (set1[i]<>set2[j]) THEN
+                sum = sum+set1[i] BREAK;
+            END_IF
+        END_FOR
+    END_FOR
+END
+
+
+
+
+ALGORITHM algo2_htab
+VAR
+    set1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m];
+    htab: HASH_TABLE<INTEGER,INTEGER>
+    i,j,sum:INTEGER
+    elt:INTEGER
+    count:INTEGER
+
+    
+
+BEGIN
+    FOR i FROM 0 TO set1.length STEP 1  DO
+        Read(set1[i])
+    END_FOR
+    FOR j FROM 0 TO set2.length STEP 1  DO
+        Read(set2[j])
+    END_FOR
+
+    FOR i FROM 0 TO set1.length STEP 1  DO
+        IF (htab.lookup(set[i])) THEN
+            count=htab.get(set1[i])+1
+            htab.get(set1[i])=count
+        ELSE    
+            htab.insert(set1[i],1)
+        END_IF
+
+    END_FOR
+
+    Write (htab)
+
+    FOR j FROM 0 TO set2.length STEP 1  DO
+        IF (htab.lookup(set2[j])) THEN
+            count=htab.get(set2[j])+1
+            htab.get(set2[j])=count
+        ELSE    
+            htab.insert(set2[j],1)
+        END_IF
+
+    END_FOR
+
+    Write (htab)
+
+    sum = 0
+    FOR i FROM 0 TO n STEP 1  DO
+        IF (htab.get(set1[i]==1)) THEN
+            sum = sum +set1[i]
+        END_IF
+    END_FOR
+    FOR j FROM 0 TO m STEP 1  DO
+        IF (htab.get(set2[j]==1)) THEN
+            sum = sum +set2[j]
+        END_IF
+    END_FOR
+    write(sum)
+END
+
+
+
+
+ALGORITHM algo2_prb2
+VAR
+    set1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m];
+    i,j:INTEGER
+    sum:INTEGER
+
+BEGIN
+    sum=0
+    FOR i FROM 0 TO set1.length STEP 1  DO
+        Read(set1[i])
+    END_FOR
+    FOR j FROM 0 TO set2.length STEP 1  DO
+        Read(set2[j])
+    END_FOR
+    
+    FOR i FROM 0 TO set1.length STEP 1  DO
+        FOR j FROM 0 TO set2.length STEP 1  DO
+        
+            IF (set1[i]==set2[j]) THEN
+                sum = sum+set1[i] BREAK;
+            END_IF
+        END_FOR
+    END_FOR
+END
+
+
+
+
+ALGORITHM algo2_htab_prb2
+VAR
+    set1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m];
+    htab: HASH_TABLE<INTEGER,INTEGER>
+    i,j,sum:INTEGER
+    elt:INTEGER
+    count:INTEGER
+
+    
+
+BEGIN
+    FOR i FROM 0 TO set1.length STEP 1  DO
+        Read(set1[i])
+    END_FOR
+    FOR j FROM 0 TO set2.length STEP 1  DO
+        Read(set2[j])
+    END_FOR
+
+    FOR i FROM 0 TO set1.length STEP 1  DO
+        IF (htab.lookup(set[i])) THEN
+            count=htab.get(set1[i])+1
+            htab.get(set1[i])=count
+        ELSE    
+            htab.insert(set1[i],1)
+        END_IF
+
+    END_FOR
+
+    Write (htab)
+
+    FOR j FROM 0 TO set2.length STEP 1  DO
+        IF (htab.lookup(set2[j])) THEN
+            count=htab.get(set2[j])+1
+            htab.get(set2[j])=count
+        ELSE    
+            htab.insert(set2[j],1)
+        END_IF
+
+    END_FOR
+
+    Write (htab)
+
+    sum = 0
+    FOR i FROM 0 TO n STEP 1  DO
+        num=htab.get(set1[i])
+
+        IF (htab.get(set1[i]<>1)) THEN
+            sum = sum +(set1[i]*num)
+        END_IF
+    END_FOR
+    FOR j FROM 0 TO m STEP 1  DO
+        num=htab.get(set2[j])
+
+        IF (htab.get(set2[j]<>1)) THEN
+            sum = sum +(set2[j]*num)
+        END_IF
+    END_FOR
+    write(sum)
+END
